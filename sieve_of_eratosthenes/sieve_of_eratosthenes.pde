@@ -116,5 +116,6 @@ void draw() {
       range.set(curr_mul - 1, 0);
     }
   }
-  delay(100);
+  saveFrame("frames/####.tif");
+  delay(200);
 }
