@@ -3,8 +3,8 @@ boolean [][] board_copy;
 int H = 100;
 int W = 100;
 
-int fill_color = 0;
-int nofill_color = 255;
+int fill_color = color(102,255,102);
+int nofill_color = color(0,0,0);
 int fill_with;
 
 int [][] neighbours;
@@ -15,25 +15,33 @@ int ny;
 int [][] glider = {{0,0}, {0,2}, {1,1}, {1,2},{2,1}};
 int [][] blinker = {{0,0}, {0,1}, {0,2}};
 
+float randf;
+
 void setup() {
   size(600,600);
   board = new boolean[H][W];
-  board = empty_board(board);
+  random_board(board);
   draw_board(board);
-  create_shape(board, glider, 50, 50);
-  create_shape(board, blinker, 30, 70);
   board_copy = new boolean[H][W];
   neighbours = new int[8][2];
 }
 
-
-boolean [][] empty_board(boolean b[][]) {
+// Unused.
+void empty_board(boolean b[][]) {
   for (int i=0; i<H; i++) {
     for (int j=0; j<W; j++) {
       b[i][j] = false;
-    }}
-  return b;
-}
+      }}}
+    
+    
+void random_board(boolean b[][]) {
+  for (int i=0; i<H; i++) {
+    for (int j=0; j<W; j++) {
+      randf = random(1);
+      if (randf > 0.98) {
+        create_shape(b, glider, i, j);
+      }
+    }}}
 
 
 int [][] get_neighbours(int x, int y) {
@@ -42,6 +50,7 @@ int [][] get_neighbours(int x, int y) {
                    {x+1, y-1}, {x+1, y}, {x+1, y+1} };
   return nbs;
 }
+
 
 void draw_board(boolean b[][]) {
   for (int i=0; i<H; i++) {
