@@ -15,8 +15,10 @@ int count;
 int nx;
 int ny;
 
-int [][] glider = {{0,0}, {0,2}, {1,1}, {1,2},{2,1}};
 int [][] blinker = {{0,0}, {0,1}, {0,2}};
+int [][] glider = {{0,0},        {0,2}, 
+                          {1,1}, {1,2},
+                          {2,1}};
 
 float randf;
 
@@ -104,5 +106,6 @@ void draw() {
   draw_board(board);
   copy_board(board, board_copy);
   update_board(board, board_copy);
+  //saveFrame("frames/####.png");
   delay(50);
 }
