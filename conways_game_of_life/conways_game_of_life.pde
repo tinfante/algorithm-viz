@@ -2,6 +2,9 @@ boolean [][] board;
 boolean [][] board_copy;
 int H = 200;
 int W = 100;
+// So... I've got height and width flipped. Apparently, in Processing,
+// indexing of a 2d array is done first by columns, then by rows???
+// See: https://processing.org/tutorials/2darray/
 
 int fill_color = color(102,255,102);
 int nofill_color = color(0,0,0);
@@ -33,8 +36,8 @@ void empty_board(boolean b[][]) {
     for (int j=0; j<W; j++) {
       b[i][j] = false;
       }}}
-    
-    
+
+
 void random_board(boolean b[][]) {
   for (int i=0; i<H; i++) {
     for (int j=0; j<W; j++) {
