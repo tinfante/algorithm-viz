@@ -1,10 +1,13 @@
 boolean [][] board;
 boolean [][] board_copy;
-int H = 200;
-int W = 100;
+int H = 300;
+int W = 150;
 // So... I've got height and width flipped. Apparently, in Processing,
 // indexing of a 2d array is done first by columns, then by rows???
 // See: https://processing.org/tutorials/2darray/
+int cell_size = 5;
+int xpix = H * cell_size;
+int ypix = W * cell_size;
 
 int fill_color = color(102,255,102);
 int nofill_color = color(0,0,0);
@@ -24,7 +27,7 @@ float randf;
 
 
 void setup() {
-  size(1200,600);
+  surface.setSize(xpix,ypix);
   board = new boolean[H][W];
   random_board(board);
   draw_board(board);
@@ -44,7 +47,7 @@ void random_board(boolean b[][]) {
   for (int i=0; i<H; i++) {
     for (int j=0; j<W; j++) {
       randf = random(1);
-      if (randf > 0.995) {
+      if (randf > 0.98) {
         create_shape(b, glider, i, j);
       }
     }}}
@@ -70,7 +73,7 @@ void draw_board(boolean b[][]) {
     for (int j=0; j<W; j++) {
       fill_with = (b[i][j] == true) ? fill_color: nofill_color;
       fill(fill_with);
-      rect(i*6, j*6, 6, 6);
+      rect(i*cell_size, j*cell_size, cell_size, cell_size);
       }}}
 
 
