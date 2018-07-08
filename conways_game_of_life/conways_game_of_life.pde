@@ -27,8 +27,8 @@ float randf;
 
 
 void setup() {
-  surface.setSize(xpix,ypix);
-  board = new boolean[H][W];
+  surface.setSize(xpix,ypix);  // equivalent of size() but allows vars,
+  board = new boolean[H][W];   // while size() only accepts literals.
   random_board(board);
   draw_board(board);
   board_copy = new boolean[H][W];
@@ -47,10 +47,10 @@ void random_board(boolean b[][]) {
   for (int i=0; i<H; i++) {
     for (int j=0; j<W; j++) {
       randf = random(1);
-      if (randf > 0.98) {
-        create_shape(b, glider, i, j);
-      }
-    }}}
+      if (randf > 0.90) {
+        //create_shape(b, glider, i, j);
+        b[i][j] = true;
+      }}}}
 
 
 void copy_board(boolean b[][], boolean bc[][]) {
